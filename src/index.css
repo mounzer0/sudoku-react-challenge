@@ -1,0 +1,96 @@
+/* index.css */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+  padding: 2rem;
+}
+
+h1, h2 {
+  color: #222;
+}
+
+button {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+
+/* ========== Saved Boards as Card Grid ========== */
+.saved-board-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 1.5rem;
+}
+
+.saved-card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.saved-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+.saved-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+  text-align: center;
+}
+
+.saved-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.saved-actions button {
+  flex: 1;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  font-weight: 500;
+  border: none;
+  transition: background 0.2s ease;
+}
+
+.saved-actions .load-btn {
+  background-color: #1976d2;
+  color: #fff;
+}
+
+.saved-actions .load-btn:hover {
+  background-color: #1565c0;
+}
+
+.saved-actions .delete-btn {
+  background-color: #e53935;
+  color: #fff;
+}
+
+.saved-actions .delete-btn:hover {
+  background-color: #c62828;
+}
