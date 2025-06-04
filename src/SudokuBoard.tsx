@@ -21,6 +21,7 @@ const SudokuBoard: React.FC<SudokuBoardProps> = ({ loadNamedBoard, onSaveComplet
     const [solution, setSolution] = useState<string[][] | null>(null);
     const [difficulty, setDifficulty] = useState<'easy' | 'medium' | 'hard'>('medium');
     const [isLoadingOCR, setIsLoadingOCR] = useState(false);
+    const [fixedCells, setFixedCells] = useState<Set<string>>(new Set());
 
     useEffect(() => {
         if (loadNamedBoard) {
@@ -118,7 +119,16 @@ const SudokuBoard: React.FC<SudokuBoardProps> = ({ loadNamedBoard, onSaveComplet
         setBoard(puzzle);
         setSolution(solution);
         setConflicts(new Set());
+
+        const fixed = new Set<string>();
+        puzzle.forEach((row, i) =>
+            row.forEach((val, j) => {
+                if (val !== '') fixed.add(`${i}-${j}`);
+            })
+        );
+        setFixedCells(fixed);
     };
+
 
     const saveBoard = () => {
         const name = prompt('Enter a name for this board:');
@@ -195,6 +205,14 @@ const SudokuBoard: React.FC<SudokuBoardProps> = ({ loadNamedBoard, onSaveComplet
             }
 
             setBoard(newBoard);
+            const fixed = new Set<string>();
+            newBoard.forEach((row, i) =>
+                row.forEach((val, j) => {
+                    if (val !== '') fixed.add(`${i}-${j}`);
+                })
+            );
+            setFixedCells(fixed);
+
             const solved = solveSudoku(newBoard);
             if (solved) setSolution(solved);
         } catch (error) {
@@ -213,9 +231,10 @@ const SudokuBoard: React.FC<SudokuBoardProps> = ({ loadNamedBoard, onSaveComplet
                 board={board}
                 conflicts={conflicts}
                 onChange={handleChange}
-                isCellEditable={(row, col) => isCellEditable(board, row, col)}
+                isCellEditable={(row, col) => isCellEditable(fixedCells, row, col)}  // ✅ FIXED
                 getCellClass={getCellClass}
             />
+
 
             <Controls
                 difficulty={difficulty}

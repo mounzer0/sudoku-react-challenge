@@ -5,6 +5,11 @@ export const getCellClass = (row: number, col: number): string => {
     return classes.join(' ');
 };
 
-export const isCellEditable = (board: string[][], row: number, col: number): boolean => {
-    return board[row][col] === '';
+export const isCellEditable = (
+    fixedCells: Set<string>,
+    row: number,
+    col: number
+): boolean => {
+    return !fixedCells.has(`${row}-${col}`);
 };
+
