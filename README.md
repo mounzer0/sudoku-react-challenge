@@ -1,54 +1,68 @@
-# React + TypeScript + Vite
+Sudoku Game 🎯
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fully interactive **Sudoku puzzle game** built with **React**, **TypeScript**, and enhanced with features like:
 
-Currently, two official plugins are available:
+- ✅ Puzzle generation (easy / medium / hard)
+- ✅ Real-time conflict validation
+- ✅ OCR image upload via `tesseract.js`
+- ✅ Hint system
+- ✅ Board save/load to `localStorage`
+- ✅ Beautiful 3x3 grid layout
+- ✅ Mobile-responsive interface
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+✨ Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+| Feature            | Description                                                                 |
+|--------------------|-----------------------------------------------------------------------------|
+| 🎲 Generate Puzzle | Creates new Sudoku boards with varying difficulty.                          |
+| 👓 OCR Upload      | Upload an image of a Sudoku puzzle — parsed via `tesseract.js`.             |
+| 💾 Save/Load       | Save boards by name and load them later from a menu.                        |
+| 💡 Hint System     | Get a hint for any empty cell using the pre-solved board.                   |
+| 🧠 Check Conflicts | Highlights duplicate values in rows, columns, or blocks.                    |
+| 📱 Mobile Ready    | Clean UI with responsive design and accessible controls.                    |
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+🧰 Tech Stack
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- ⚛️ React + TypeScript
+- 🎯 Tesseract.js for OCR
+- 🧠 Custom Sudoku generator & solver
+- 🧼 CSS Modules for styling
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+---
+
+🚀 Getting Started
+
+```bash
+git clone https://github.com/mounzer0/sudoku-challenge.git
+cd sudoku-react-challenge
+npm install
+npm run dev
+Open http://localhost:5173 in your browser.
+
+🧪 OCR Tips
+OCR accuracy depends on image clarity. Use:
+
+Well-lit scans
+Dark text on white paper
+Avoid handwritten puzzles (unless clear)
+
+📂 Folder Structure
+src/
+  ├── components/       # Grid, Controls, OCRUpload, etc.
+  ├── utils/            # Sudoku logic, helpers
+  ├── App.tsx
+  ├── SudokuBoard.tsx
+  ├── SaveBoard.tsx
+
+👤 Author
+Name: Mounzer Ammar
+
+GitHub: github.com/mounzer0
+
+🎯 Challenge Info
+This project was built as part of the NavyBits Internship Challenge.
+It demonstrates TypeScript proficiency, clean component architecture, OCR integration, and UI state management.
